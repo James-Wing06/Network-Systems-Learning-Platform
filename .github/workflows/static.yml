@@ -1,0 +1,77 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+
+# Permissions required for BOTH AWS OIDC and GitHub Pages
+permissions:
+  id-token: write
+  contents: read
+  pages: write
+
+jobs:
+  test_and_migrate:
+    name: Test and Migrate Database
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      # Cache Dependencies Globally
+      - name: Cache Dependencies
+        uses: actions/cache@v4
+        with:
+          path: ~/.npm 
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+
+      # Install Dependencies
+      - name: Install Dependencies
+        run: npm ci 
+
+
+      # TEMPORARILY DISABLED #
+      
+      # Secure AWS Authentication via OIDC
+      #- name: Configure AWS Credentials
+      #  uses: aws-actions/configure-aws-credentials@v4
+      #  with:
+      #    role-to-assume: arn:aws:iam::123456789012:role/YourGithubActionsRole
+      #    aws-region: us-east-1 
+      #    audience: ://amazonaws.com
+
+      # Safe Database Migration (Runs before deployment)
+      #- name: Update Database Schemas and Tables
+      #  run: npm run db:migrate 
+
+      # Run Tests
+      - name: Run Tests
+        run: npm test
+
+      # Prepare and Upload the HTML files for GitHub Pages
+      - name: Upload Pages Artifact
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: '.'
+
+  deploy:
+    name: Deploy to GitHub Pages
+    runs-on: ubuntu-latest
+    needs: test_and_migrate
+    # Deployment only runs on actual commits to main after testing passes
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
