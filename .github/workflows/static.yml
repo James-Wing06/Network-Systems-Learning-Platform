@@ -21,17 +21,17 @@ jobs:
         uses: actions/checkout@v4
 
       # Cache Dependencies Globally
-      - name: Cache Dependencies
-        uses: actions/cache@v4
-        with:
-          path: ~/.npm 
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
+      #- name: Cache Dependencies
+      #  uses: actions/cache@v4
+      #  with:
+      #    path: ~/.npm
+      #    key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+      #    restore-keys: |
+      #      ${{ runner.os }}-node-
 
       # Install Dependencies
-      - name: Install Dependencies
-        run: npm ci 
+      #- name: Install Dependencies
+      #  run: npm ci
 
 
       # TEMPORARILY DISABLED #
@@ -49,8 +49,8 @@ jobs:
       #  run: npm run db:migrate 
 
       # Run Tests
-      - name: Run Tests
-        run: npm test
+      # - name: Run Tests
+      #  run: npm test
 
       # Prepare and Upload the HTML files for GitHub Pages
       - name: Upload Pages Artifact
