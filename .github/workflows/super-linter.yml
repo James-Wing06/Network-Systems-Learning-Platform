@@ -35,3 +35,8 @@ jobs:
         env:
           # To report GitHub Actions status checks
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          env:
+          # Disables Prettier solely for HTML files
+          VALIDATE_HTML_PRETTIER: false
+          VALIDATE_HTML_HINT: true
+
