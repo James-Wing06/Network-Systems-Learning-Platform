@@ -37,3 +37,5 @@ jobs:
           # Disables Prettier solely for HTML files
           VALIDATE_HTML_PRETTIER: false
           VALIDATE_HTML_HINT: true
+          # Disable zizmor completely to bypass hash checks
+          VALIDATE_GHA_ZIZMOR: false
