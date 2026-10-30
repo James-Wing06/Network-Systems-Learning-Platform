@@ -6,23 +6,25 @@ on:
   pull_request:
     branches: ["main"]
 
-# Permissions required for BOTH AWS OIDC and GitHub Pages
-permissions:
-  id-token: write
-  contents: read
-  pages: write
+# Clear global permissions, maintains principle of least privilege
+permissions: {}
 
 jobs:
   test_and_migrate:
     name: Test and Migrate Database
     runs-on: ubuntu-latest
+    permissions:
+      contents: read     # Required to check out the repository
+      id-token: write    # Required when AWS OIDC step gets uncommented later
     steps:
       - name: Checkout Code
-        uses: actions/checkout@v4
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
 
       # Cache Dependencies Globally
       #- name: Cache Dependencies
-      #  uses: actions/cache@v4
+      #  uses: actions/cache@d4323d4df104b026a6e76e954ef40d4ef0a20028 # v4.2.3
       #  with:
       #    path: ~/.npm
       #    key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
@@ -33,20 +35,19 @@ jobs:
       #- name: Install Dependencies
       #  run: npm ci
 
-
       # TEMPORARILY DISABLED #
-      
+
       # Secure AWS Authentication via OIDC
       #- name: Configure AWS Credentials
-      #  uses: aws-actions/configure-aws-credentials@v4
+      #  uses: aws-actions/configure-aws-credentials@blahblahblah
       #  with:
       #    role-to-assume: arn:aws:iam::123456789012:role/YourGithubActionsRole
-      #    aws-region: us-east-1 
+      #    aws-region: us-east-1
       #    audience: ://amazonaws.com
 
       # Safe Database Migration (Runs before deployment)
       #- name: Update Database Schemas and Tables
-      #  run: npm run db:migrate 
+      #  run: npm run db:migrate
 
       # Run Tests
       # - name: Run Tests
@@ -55,7 +56,7 @@ jobs:
       # Prepare and Upload the HTML files for GitHub Pages
       - name: Upload Pages Artifact
         if: github.event_name == 'push' && github.ref == 'refs/heads/main'
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@56afc609e74202658d3ffba0e8f6dee4966285e9
         with:
           path: '.'
 
@@ -65,13 +66,16 @@ jobs:
     needs: test_and_migrate
     # Deployment only runs on actual commits to main after testing passes
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    permissions:
+      pages: write      # Required to deploy pages
+      id-token: write    # Required to authenticate deployment request
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - name: Setup Pages
-        uses: actions/configure-pages@v5
+        uses: actions/configure-pages@1c0c3acbf9ad904590053f47c0a9691b48d59364
 
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@d6db90164add5ee84c172436dd5e6784efad69ec
