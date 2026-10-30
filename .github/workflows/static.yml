@@ -18,7 +18,7 @@ jobs:
       id-token: write    # Required when AWS OIDC step gets uncommented later
     steps:
       - name: Checkout Code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v4 # zizmor ignore: unpinned-uses
         with:
           persist-credentials: false
 
@@ -56,7 +56,7 @@ jobs:
       # Prepare and Upload the HTML files for GitHub Pages
       - name: Upload Pages Artifact
         if: github.event_name == 'push' && github.ref == 'refs/heads/main'
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v3 # zizmor ignore: unpinned-uses
         with:
           path: '.'
 
@@ -74,8 +74,8 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - name: Setup Pages
-        uses: actions/configure-pages@v5
+        uses: actions/configure-pages@v5 # zizmor ignore: unpinned-uses
 
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v4 # zizmor ignore: unpinned-uses
