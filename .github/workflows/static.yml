@@ -74,8 +74,8 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - name: Setup Pages
-        uses: actions/configure-pages@1c0c3acbf9ad904590053f47c0a9691b48d59364
+        uses: actions/configure-pages@983d7736b9b0ae728cdcee111d92a06bc917088b # v5.0.0
 
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@d6db90164add5ee84c172436dd5e6784efad69ec
+        uses: actions/deploy-pages@cd2ce8f01b3ffaa2b3149be11f5fae6c602cc3f8 # v5.0.0
