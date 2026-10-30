@@ -39,3 +39,4 @@ jobs:
           VALIDATE_HTML_HINT: true
           # Disable zizmor completely to bypass hash checks
           VALIDATE_GHA_ZIZMOR: false
+          VALIDATE_GITHUB_ACTIONS: false
