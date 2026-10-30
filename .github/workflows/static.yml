@@ -18,7 +18,7 @@ jobs:
       id-token: write    # Required when AWS OIDC step gets uncommented later
     steps:
       - name: Checkout Code
-        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        uses: actions/checkout@v4
         with:
           persist-credentials: false
 
@@ -56,7 +56,7 @@ jobs:
       # Prepare and Upload the HTML files for GitHub Pages
       - name: Upload Pages Artifact
         if: github.event_name == 'push' && github.ref == 'refs/heads/main'
-        uses: actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9 # v5.0.0
+        uses: actions/upload-pages-artifact@v3
         with:
           path: '.'
 
@@ -74,8 +74,8 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - name: Setup Pages
-        uses: actions/configure-pages@983d7736b9b0ae728cdcee111d92a06bc917088b # v5.0.0
+        uses: actions/configure-pages@v5
 
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@d6db90164add5ee84c172436dd5e6784efad69ec # v4.0.5
+        uses: actions/deploy-pages@v4
