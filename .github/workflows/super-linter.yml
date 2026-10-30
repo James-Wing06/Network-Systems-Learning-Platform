@@ -36,7 +36,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           # Disables Prettier solely for HTML files
           VALIDATE_HTML_PRETTIER: false
-          VALIDATE_HTML_HINT: true
           # Disable zizmor completely to bypass hash checks
-          VALIDATE_GHA_ZIZMOR: false
+          VALIDATE_GITHUB_ACTIONS_ZIZMOR: false
           VALIDATE_GITHUB_ACTIONS: false
