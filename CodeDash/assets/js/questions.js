@@ -6,14 +6,21 @@ const difficultyFilter = document.querySelector("#difficulty-filter");
 const searchInput = document.querySelector("#search");
 const count = document.querySelector("#result-count");
 if (list && categoryFilter && difficultyFilter && searchInput && count) {
-  [...new Set(CodeDashMock.questions.map((q) => q.category))].forEach((category) => {
-    const option = document.createElement("option");
-    option.value = category;
-    option.textContent = category;
-    categoryFilter.append(option);
-  });
+  [...new Set(CodeDashMock.questions.map((q) => q.category))].forEach(
+    (category) => {
+      const option = document.createElement("option");
+      option.value = category;
+      option.textContent = category;
+      categoryFilter.append(option);
+    },
+  );
   function render() {
-    const filtered = CodeDashMock.filterQuestions(CodeDashMock.questions, categoryFilter.value, difficultyFilter.value, searchInput.value);
+    const filtered = CodeDashMock.filterQuestions(
+      CodeDashMock.questions,
+      categoryFilter.value,
+      difficultyFilter.value,
+      searchInput.value,
+    );
     list.replaceChildren();
     count.textContent = `${filtered.length} question(s) found`;
     filtered.forEach((q) => {
@@ -34,6 +41,8 @@ if (list && categoryFilter && difficultyFilter && searchInput && count) {
       list.append(card);
     });
   }
-  [categoryFilter, difficultyFilter, searchInput].forEach((el) => el.addEventListener("input", render));
+  [categoryFilter, difficultyFilter, searchInput].forEach((el) =>
+    el.addEventListener("input", render),
+  );
   render();
 }
