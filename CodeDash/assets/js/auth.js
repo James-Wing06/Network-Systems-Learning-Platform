@@ -1,3 +1,4 @@
+/* global CodeDashValidation */
 "use strict";
 
 const form = document.querySelector("#login-form, #register-form");
