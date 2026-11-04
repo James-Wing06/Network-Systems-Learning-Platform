@@ -1,0 +1,11 @@
+
+{
+  "name": "codedash-frontend",
+  "private": true,
+  "version": "0.1.0",
+  "description": "CodeDash frontend demonstration and automated tests",
+  "scripts": {
+    "test": "node --test tests/*.test.cjs",
+    "check": "node --check assets/js/script.js && node --check assets/js/auth.js && node --check assets/js/questions.js && node --check assets/js/submission.js && node --check assets/js/api.js && node --check assets/js/mock-data.js && node --check assets/js/validation.js && node --check assets/js/dashboard.js"
+  }
+}
