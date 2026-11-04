@@ -27,11 +27,22 @@ function renderServerResult(data) {
   const status = typeof data.status === "string" ? data.status : "Unknown";
   addTextElement(result, "h3", `Execution status: ${status}`);
   if (Number.isInteger(data.passedTests) && Number.isInteger(data.totalTests))
-    addTextElement(result, "p", `Tests passed: ${data.passedTests} / ${data.totalTests}`);
+    addTextElement(
+      result,
+      "p",
+      `Tests passed: ${data.passedTests} / ${data.totalTests}`,
+    );
   if (typeof data.score === "number" && Number.isFinite(data.score))
     addTextElement(result, "p", `Score: ${data.score}`);
-  if (typeof data.executionTime === "number" && Number.isFinite(data.executionTime))
-    addTextElement(result, "p", `Execution time: ${data.executionTime} seconds`);
+  if (
+    typeof data.executionTime === "number" &&
+    Number.isFinite(data.executionTime)
+  )
+    addTextElement(
+      result,
+      "p",
+      `Execution time: ${data.executionTime} seconds`,
+    );
   if (typeof data.feedback === "string") {
     addTextElement(result, "p", data.feedback);
   }
@@ -46,10 +57,15 @@ async function handleSubmission(mode) {
     return feedback("Enter code before submitting.", true);
   }
   if (source.length > 20000) {
-    return feedback("Solution exceeds the 20,000-character frontend limit.", true);
+    return feedback(
+      "Solution exceeds the 20,000-character frontend limit.",
+      true,
+    );
   }
   if (!CodeDash_API.enabled) {
-    return feedback("Code validated locally. Judge0 execution is not connected yet. No code was executed, graded, or saved.");
+    return feedback(
+      "Code validated locally. Judge0 execution is not connected yet. No code was executed, graded, or saved.",
+    );
   }
   submit.disabled = true;
   if (runTests) runTests.disabled = true;
@@ -61,12 +77,15 @@ async function handleSubmission(mode) {
       question.id,
       selectedLanguage,
       source,
-      mode
+      mode,
     );
     renderServerResult(data);
   } catch (error) {
     if (statusLabel) statusLabel.textContent = "Evaluation failed";
-    feedback(error instanceof Error ? error.message : "Unexpected submission error.", true);
+    feedback(
+      error instanceof Error ? error.message : "Unexpected submission error.",
+      true,
+    );
   } finally {
     submit.disabled = false;
     if (runTests) runTests.disabled = !CodeDash_API.enabled;
@@ -74,7 +93,12 @@ async function handleSubmission(mode) {
 }
 if (ticket && submit && result && code) {
   if (!question) {
-    addTextElement(ticket, "p", "Question not found. Return to the challenge list.", "notice error");
+    addTextElement(
+      ticket,
+      "p",
+      "Question not found. Return to the challenge list.",
+      "notice error",
+    );
     if (difficulty) difficulty.textContent = "Unavailable";
     submit.disabled = true;
     code.disabled = true;
@@ -92,7 +116,7 @@ if (ticket && submit && result && code) {
     const examples = [
       ["Input", question.input],
       ["Expected Output", question.output],
-      ["Example", question.example]
+      ["Example", question.example],
     ];
 
     for (const [heading, value] of examples) {
