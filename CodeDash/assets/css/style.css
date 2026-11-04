@@ -222,7 +222,7 @@ h2 {
   font-size: 14px;
 }
 
-.login-text a {
+.cta .login-text a {
   color: #2563eb;
   font-weight: bold;
 }
