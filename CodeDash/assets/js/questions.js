@@ -1,3 +1,4 @@
+/* global CodeDashMock */
 "use strict";
 
 const list = document.querySelector("#question-list");
