@@ -2,13 +2,20 @@
 
 // Dashboard reads demo questions only. Account progress and scores must come from the server.
 (function () {
-  const data = typeof CodeDashMock !== "undefined" ? CodeDashMock.questions : [];
+  const data =
+    typeof CodeDashMock !== "undefined" ? CodeDashMock.questions : [];
   const total = document.getElementById("total-challenges");
   const categoriesCount = document.getElementById("total-categories");
   const categoryContainer = document.getElementById("dashboard-categories");
   const difficultyContainer = document.getElementById("difficulty-breakdown");
   const suggestions = document.getElementById("suggested-challenges");
-  if (!total || !categoriesCount || !categoryContainer || !difficultyContainer || !suggestions) {
+  if (
+    !total ||
+    !categoriesCount ||
+    !categoryContainer ||
+    !difficultyContainer ||
+    !suggestions
+  ) {
     return;
   }
 
@@ -16,9 +23,11 @@
   total.textContent = String(data.length);
   categoriesCount.textContent = String(categories.length);
   const descriptions = {
-    "Network Layering & Addressing": "IP addresses, subnets, and network fundamentals",
+    "Network Layering & Addressing":
+      "IP addresses, subnets, and network fundamentals",
     "Troubleshooting & Diagnosis": "Find problems and reason through failures",
-    "Protocol Parsing & Data Processing": "Interpret logs, protocols, and network data"
+    "Protocol Parsing & Data Processing":
+      "Interpret logs, protocols, and network data",
   };
   categories.forEach((name, index) => {
     const card = document.createElement("article");
@@ -29,7 +38,8 @@
     const heading = document.createElement("h3");
     heading.textContent = name;
     const description = document.createElement("p");
-    description.textContent = descriptions[name] || "Practice networking challenges";
+    description.textContent =
+      descriptions[name] || "Practice networking challenges";
     const count = document.createElement("span");
     count.className = "dashboard-category-count";
     count.textContent = `${data.filter((q) => q.category === name).length} sample challenge(s)`;
