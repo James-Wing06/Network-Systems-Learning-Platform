@@ -405,7 +405,7 @@ pre {
   outline-offset: 3px;
 }
 
-@media (max-width <= 768px) {
+@media (width <= 768px) {
   .navbar {
     flex-direction: column;
     gap: 20px;
@@ -607,7 +607,7 @@ pre {
   margin: 0;
 }
 
-@media (max-width <= 850px) {
+@media (width <= 850px) {
   .workspace-grid {
     grid-template-columns: 1fr;
   }
@@ -622,7 +622,7 @@ pre {
   }
 }
 
-@media (max-width <= 480px) {
+@media (width <= 480px) {
   .workspace-page {
     padding: 16px 12px 28px;
   }
@@ -876,7 +876,7 @@ pre {
   margin-top: 5px;
 }
 
-@media (max-width <= 900px) {
+@media (width <= 900px) {
   .dashboard-stats {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -890,7 +890,7 @@ pre {
   }
 }
 
-@media (max-width <= 600px) {
+@media (width <= 600px) {
   .dashboard-hero {
     padding: 26px;
     align-items: flex-start;
