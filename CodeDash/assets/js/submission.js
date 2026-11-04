@@ -1,3 +1,4 @@
+/* global CodeDashMock, CodeDash_API */
 "use strict";
 
 const ticket = document.querySelector("#ticket");
