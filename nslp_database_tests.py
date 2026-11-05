@@ -40,8 +40,8 @@ column-level grants, password hashing, rate limiting.
 """
 
 import os
-import re
 import random
+import re
 import threading
 import unittest
 import uuid
