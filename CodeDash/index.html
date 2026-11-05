@@ -1,31 +1,27 @@
 
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="CodeDash networking coding challenge dashboard">
+    <meta name="description" content="CodeDash is a networking coding challenge platform where students practice troubleshooting, addressing, and protocol processing.">
 
-    <title>CodeDash | Dashboard</title>
+    <title>CodeDash | Home</title>
 
     <link rel="stylesheet" href="assets/css/style.css">
-
 </head>
 
 <body>
-
     <div class="demo-banner">
         Frontend demonstration: accounts, saved scores, and grading require backend integration.
     </div>
 
     <header>
         <nav class="navbar" aria-label="Main navigation">
-
             <a href="index.html" class="logo">CodeDash</a>
 
             <div class="nav-links">
-                <a href="index.html">Home</a>
+                <a href="index.html" aria-current="page">Home</a>
                 <a href="about.html">About Us</a>
                 <a href="dashboard.html">Dashboard</a>
                 <a href="questions.html">Questions</a>
@@ -33,130 +29,131 @@
                 <a href="login.html">Login</a>
                 <a href="register.html" class="nav-button">Register</a>
             </div>
-
         </nav>
     </header>
 
-    <main class="page dashboard-page">
-
-        <section class="dashboard-hero" aria-labelledby="dashboard-title">
-
-            <div>
-                <span class="dashboard-eyebrow">YOUR LEARNING HUB</span>
-
-                <h1 id="dashboard-title">Welcome to CodeDash</h1>
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Learn Networking Through Practice</h1>
 
                 <p>
-                    Practice networking through coding challenges.
-                    Pick a category, open a support ticket, and start solving.
+                    Build your programming and networking skills through
+                    hands-on coding challenges inspired by real-world
+                    IT support tickets.
+                </p>
+
+                <div class="hero-buttons">
+                    <a href="questions.html" class="btn btn-primary">
+                        Explore Challenges
+                    </a>
+
+                    <a href="about.html" class="btn btn-secondary">
+                        Learn More
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section class="features">
+            <div class="container">
+                <h2>Why CodeDash?</h2>
+
+                <p class="section-description">
+                    Practice technical skills through interactive,
+                    scenario-based challenges.
+                </p>
+
+                <div class="cards">
+                    <div class="card">
+                        <h3>Real-World Scenarios</h3>
+                        <p>
+                            Solve challenges presented as IT support
+                            tickets and networking problems.
+                        </p>
+                    </div>
+
+                    <div class="card">
+                        <h3>Multiple Difficulty Levels</h3>
+                        <p>
+                            Progress from beginner-friendly exercises
+                            to more advanced troubleshooting tasks.
+                        </p>
+                    </div>
+
+                    <div class="card">
+                        <h3>Automated Feedback</h3>
+                        <p>
+                            The planned grading system will evaluate
+                            submitted solutions using test cases.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="categories">
+            <div class="container">
+                <h2>Challenge Categories</h2>
+
+                <p class="section-description">
+                    Explore different areas of computer networking
+                    and programming.
+                </p>
+
+                <div class="cards">
+                    <div class="card">
+                        <h3>Network Layering &amp; Addressing</h3>
+                        <p>
+                            Practice IP addressing, subnetting,
+                            and networking fundamentals.
+                        </p>
+
+                        <a href="questions.html">View Challenges</a>
+                    </div>
+
+                    <div class="card">
+                        <h3>Troubleshooting &amp; Diagnosis</h3>
+                        <p>
+                            Investigate network problems and develop
+                            solutions to technical support scenarios.
+                        </p>
+
+                        <a href="questions.html">View Challenges</a>
+                    </div>
+
+                    <div class="card">
+                        <h3>Protocol Parsing &amp; Data Processing</h3>
+                        <p>
+                            Work with network-related data, protocols,
+                            and programming exercises.
+                        </p>
+
+                        <a href="questions.html">View Challenges</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="cta">
+            <div class="container">
+                <h2>Ready to Start Learning?</h2>
+
+                <p>
+                    Explore coding challenges and strengthen
+                    your networking knowledge.
+                </p>
+
+                <a href="register.html" class="btn btn-primary">
+                    Get Started
+                </a>
+
+                <p class="login-text">
+                    Already have an account?
+                    <a href="login.html">Log in</a>
                 </p>
             </div>
-
-            <a class="btn dashboard-hero-btn" href="questions.html">
-                Browse Challenges
-            </a>
-
         </section>
-
-        <section class="dashboard-section" aria-labelledby="overview-heading">
-
-            <div class="dashboard-section-heading">
-                <h2 id="overview-heading">Challenge Overview</h2>
-                <span class="dashboard-note">Sample question library</span>
-            </div>
-
-            <div class="dashboard-stats">
-
-                <article class="dashboard-stat">
-                    <span class="stat-label">Available challenges</span>
-                    <strong id="total-challenges">—</strong>
-                    <span class="stat-foot">Loaded from demo data</span>
-                </article>
-
-                <article class="dashboard-stat">
-                    <span class="stat-label">Categories</span>
-                    <strong id="total-categories">—</strong>
-                    <span class="stat-foot">Networking topics</span>
-                </article>
-
-                <article class="dashboard-stat">
-                    <span class="stat-label">Completed challenges</span>
-                    <strong class="stat-pending">—</strong>
-                    <span class="stat-foot">Awaiting account API</span>
-                </article>
-
-                <article class="dashboard-stat">
-                    <span class="stat-label">Your score</span>
-                    <strong class="stat-pending">—</strong>
-                    <span class="stat-foot">Awaiting grading API</span>
-                </article>
-
-            </div>
-
-        </section>
-
-        <section class="dashboard-section" aria-labelledby="categories-heading">
-
-            <div class="dashboard-section-heading">
-                <h2 id="categories-heading">Explore Categories</h2>
-                <a href="questions.html" class="text-link">All challenges</a>
-            </div>
-
-            <div id="dashboard-categories" class="dashboard-categories"></div>
-
-        </section>
-
-        <div class="dashboard-lower">
-
-            <section class="dashboard-section" aria-labelledby="difficulty-heading">
-
-                <h2 id="difficulty-heading">Difficulty Breakdown</h2>
-
-                <div class="dashboard-surface" id="difficulty-breakdown"></div>
-
-            </section>
-
-            <section class="dashboard-section" aria-labelledby="continue-heading">
-
-                <h2 id="continue-heading">Start Practicing</h2>
-
-                <div class="dashboard-surface">
-
-                    <p class="muted">
-                        Choose a sample ticket to try the coding workspace.
-                    </p>
-
-                    <div id="suggested-challenges" class="dashboard-suggestions"></div>
-
-                </div>
-
-            </section>
-
-        </div>
-
-        <section class="dashboard-section" aria-labelledby="recent-heading">
-
-            <h2 id="recent-heading">Recent Submissions</h2>
-
-            <div class="dashboard-surface dashboard-empty">
-
-                <span class="dashboard-empty-icon" aria-hidden="true">
-                    &lt;/&gt;
-                </span>
-
-                <div>
-                    <strong>No submission history available yet</strong>
-
-                    <p class="muted">
-                        Your Judge0-backed results will appear here once the
-                        CodeDash backend is connected.
-                    </p>
-                </div>
-
-            </div>
-
-        </section>
-
     </main>
 
     <footer>
@@ -165,8 +162,5 @@
     </footer>
 
     <script src="assets/js/script.js" defer></script>
-    <script src="assets/js/mock-data.js" defer></script>
-    <script src="assets/js/dashboard.js" defer></script>
-
 </body>
 </html>
