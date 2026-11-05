@@ -40,12 +40,12 @@ column-level grants, password hashing, rate limiting.
 """
 
 import os
-import random
 import re
 import threading
 import unittest
 import uuid
 from concurrent.futures import ThreadPoolExecutor
+from typing import ClassVar
 
 import mysql.connector
 from mysql.connector import Error
@@ -63,15 +63,17 @@ if not os.getenv("DB_SSL_CA"):
         "Set DB_SSL_CA to the trusted RDS CA certificate file; TLS verification is required."
     )
 
-BASE = dict(
-    host=os.environ["DB_HOST"],
-    port=int(os.getenv("DB_PORT", "3306")),
-    database=DB,
-    connection_timeout=10,
-)
-SSL = dict(
-    ssl_ca=os.environ["DB_SSL_CA"], ssl_verify_cert=True, ssl_verify_identity=True
-)
+BASE = {
+    "host": os.environ["DB_HOST"],
+    "port": int(os.getenv("DB_PORT", "3306")),
+    "database": DB,
+    "connection_timeout": 10,
+}
+SSL = {
+    "ssl_ca": os.environ["DB_SSL_CA"],
+    "ssl_verify_cert": True,
+    "ssl_verify_identity": True,
+}
 ADMIN = (os.environ["DB_USER"], os.environ["DB_PASSWORD"])
 ACCOUNT_HOST = os.getenv("ACCOUNT_HOST", "%")
 ACCOUNTS = {
@@ -299,7 +301,7 @@ class DBCase(unittest.TestCase):
 # 1. Schema introspection
 # ======================================================================
 class TestSchemaIntrospection(DBCase):
-    EXPECTED_COLUMNS = {
+    EXPECTED_COLUMNS: ClassVar = {
         "users": {
             "user_id": ("int unsigned", "NO"),
             "username": ("varchar(50)", "NO"),
@@ -348,7 +350,7 @@ class TestSchemaIntrospection(DBCase):
             "graded_at": ("datetime", "YES"),
         },
     }
-    EXPECTED_PK = {
+    EXPECTED_PK: ClassVar = {
         "users": "user_id",
         "categories": "category_id",
         "languages": "language_id",
@@ -357,13 +359,13 @@ class TestSchemaIntrospection(DBCase):
         "test_cases": "test_case_id",
         "submissions": "submission_id",
     }
-    EXPECTED_UNIQUE = [
+    EXPECTED_UNIQUE: ClassVar = [
         ("users", "username"),
         ("users", "email"),
         ("categories", "cat_name"),
         ("languages", "name"),
     ]
-    EXPECTED_FK_DELETE = {
+    EXPECTED_FK_DELETE: ClassVar = {
         "fk_questions_category": "RESTRICT",
         "fk_ql_question": "CASCADE",
         "fk_ql_language": "CASCADE",
@@ -373,7 +375,7 @@ class TestSchemaIntrospection(DBCase):
         "fk_submissions_language": "RESTRICT",
         "fk_submissions_supported_language": "RESTRICT",
     }
-    EXPECTED_CHECKS = {
+    EXPECTED_CHECKS: ClassVar = {
         "chk_users_username_len",
         "chk_users_email_format",
         "chk_questions_difficulty",
@@ -792,7 +794,7 @@ class TestAccountHygiene(DBCase):
 # 6. Per-account privilege tests
 # ======================================================================
 class PrivBase(DBCase):
-    role = None
+    role: str | None = None
 
     @classmethod
     def setUpClass(cls):
@@ -1005,7 +1007,6 @@ class TestAdminAppAccountPrivileges(PrivBase):
 # 7. Session / server settings
 # ======================================================================
 class TestServerSettings(DBCase):
-
     def test_global_sql_mode_is_strict(self):
         mode = self.scalar("SELECT @@GLOBAL.sql_mode")
         self.assertTrue(
@@ -1106,7 +1107,6 @@ class TestConcurrency(unittest.TestCase):
 # 9. Additional integrity and security regression checks
 # ======================================================================
 class TestExtendedAdversarial(DBCase):
-
     def test_failed_constraint_does_not_mutate_existing_record(self):
         uid = self.user()
         before = self.sql(
