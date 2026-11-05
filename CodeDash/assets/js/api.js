@@ -1,3 +1,4 @@
+// biome-ignore lint/suspicious/noRedundantUseStrict: Preserve strict mode for classic browser scripts.
 "use strict";
 
 // CodeDash API contract, not Judge0's native JSON format.
