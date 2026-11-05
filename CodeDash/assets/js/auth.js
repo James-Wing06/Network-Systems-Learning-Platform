@@ -1,4 +1,5 @@
 /* global CodeDashValidation */
+// biome-ignore lint/suspicious/noRedundantUseStrict: Preserve strict mode for classic browser scripts.
 "use strict";
 
 const form = document.querySelector("#login-form, #register-form");
