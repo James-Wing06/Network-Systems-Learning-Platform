@@ -50,8 +50,8 @@ jobs:
       #  run: npm run db:migrate
 
       # Run Tests
-      # - name: Run Tests
-      #  run: npm test
+      - name: Run Tests
+        run: npm test
 
       # Prepare and Upload the HTML files for GitHub Pages
       - name: Upload Pages Artifact
