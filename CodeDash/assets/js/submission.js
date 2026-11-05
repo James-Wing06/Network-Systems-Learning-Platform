@@ -1,4 +1,5 @@
 /* global CodeDashMock, CodeDash_API */
+// biome-ignore lint/suspicious/noRedundantUseStrict: Preserve strict mode for classic browser scripts.
 "use strict";
 
 const ticket = document.querySelector("#ticket");
