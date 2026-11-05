@@ -1,3 +1,4 @@
+// biome-ignore lint/suspicious/noRedundantUseStrict: Preserve strict mode for classic browser scripts.
 "use strict";
 
 // Demonstration content only; replace via backend GET /api/questions.
