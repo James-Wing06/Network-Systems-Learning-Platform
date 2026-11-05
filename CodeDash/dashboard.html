@@ -1,0 +1,172 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="CodeDash networking coding challenge dashboard">
+
+    <title>CodeDash | Dashboard</title>
+
+    <link rel="stylesheet" href="assets/css/style.css">
+
+</head>
+
+<body>
+
+    <div class="demo-banner">
+        Frontend demonstration: accounts, saved scores, and grading require backend integration.
+    </div>
+
+    <header>
+        <nav class="navbar" aria-label="Main navigation">
+
+            <a href="index.html" class="logo">CodeDash</a>
+
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="about.html">About Us</a>
+                <a href="dashboard.html">Dashboard</a>
+                <a href="questions.html">Questions</a>
+                <a href="account.html">Account</a>
+                <a href="login.html">Login</a>
+                <a href="register.html" class="nav-button">Register</a>
+            </div>
+
+        </nav>
+    </header>
+
+    <main class="page dashboard-page">
+
+        <section class="dashboard-hero" aria-labelledby="dashboard-title">
+
+            <div>
+                <span class="dashboard-eyebrow">YOUR LEARNING HUB</span>
+
+                <h1 id="dashboard-title">Welcome to CodeDash</h1>
+
+                <p>
+                    Practice networking through coding challenges.
+                    Pick a category, open a support ticket, and start solving.
+                </p>
+            </div>
+
+            <a class="btn dashboard-hero-btn" href="questions.html">
+                Browse Challenges
+            </a>
+
+        </section>
+
+        <section class="dashboard-section" aria-labelledby="overview-heading">
+
+            <div class="dashboard-section-heading">
+                <h2 id="overview-heading">Challenge Overview</h2>
+                <span class="dashboard-note">Sample question library</span>
+            </div>
+
+            <div class="dashboard-stats">
+
+                <article class="dashboard-stat">
+                    <span class="stat-label">Available challenges</span>
+                    <strong id="total-challenges">—</strong>
+                    <span class="stat-foot">Loaded from demo data</span>
+                </article>
+
+                <article class="dashboard-stat">
+                    <span class="stat-label">Categories</span>
+                    <strong id="total-categories">—</strong>
+                    <span class="stat-foot">Networking topics</span>
+                </article>
+
+                <article class="dashboard-stat">
+                    <span class="stat-label">Completed challenges</span>
+                    <strong class="stat-pending">—</strong>
+                    <span class="stat-foot">Awaiting account API</span>
+                </article>
+
+                <article class="dashboard-stat">
+                    <span class="stat-label">Your score</span>
+                    <strong class="stat-pending">—</strong>
+                    <span class="stat-foot">Awaiting grading API</span>
+                </article>
+
+            </div>
+
+        </section>
+
+        <section class="dashboard-section" aria-labelledby="categories-heading">
+
+            <div class="dashboard-section-heading">
+                <h2 id="categories-heading">Explore Categories</h2>
+                <a href="questions.html" class="text-link">All challenges</a>
+            </div>
+
+            <div id="dashboard-categories" class="dashboard-categories"></div>
+
+        </section>
+
+        <div class="dashboard-lower">
+
+            <section class="dashboard-section" aria-labelledby="difficulty-heading">
+
+                <h2 id="difficulty-heading">Difficulty Breakdown</h2>
+
+                <div class="dashboard-surface" id="difficulty-breakdown"></div>
+
+            </section>
+
+            <section class="dashboard-section" aria-labelledby="continue-heading">
+
+                <h2 id="continue-heading">Start Practicing</h2>
+
+                <div class="dashboard-surface">
+
+                    <p class="muted">
+                        Choose a sample ticket to try the coding workspace.
+                    </p>
+
+                    <div id="suggested-challenges" class="dashboard-suggestions"></div>
+
+                </div>
+
+            </section>
+
+        </div>
+
+        <section class="dashboard-section" aria-labelledby="recent-heading">
+
+            <h2 id="recent-heading">Recent Submissions</h2>
+
+            <div class="dashboard-surface dashboard-empty">
+
+                <span class="dashboard-empty-icon" aria-hidden="true">
+                    &lt;/&gt;
+                </span>
+
+                <div>
+                    <strong>No submission history available yet</strong>
+
+                    <p class="muted">
+                        Your Judge0-backed results will appear here once the
+                        CodeDash backend is connected.
+                    </p>
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2026 CodeDash</p>
+        <p>Learn. Practice. Improve.</p>
+    </footer>
+
+    <script src="assets/js/script.js" defer></script>
+    <script src="assets/js/mock-data.js" defer></script>
+    <script src="assets/js/dashboard.js" defer></script>
+    
+</body>
+</html>

@@ -1,0 +1,35 @@
+name: Frontend tests
+
+on: # yamllint disable-line rule:truthy
+  push:
+  pull_request:
+
+permissions: {}
+
+jobs:
+  frontend:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+
+    defaults:
+      run:
+        working-directory: CodeDash
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - name: Install Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Check JavaScript
+        run: npm run check
+
+      - name: Run frontend tests
+        run: npm test

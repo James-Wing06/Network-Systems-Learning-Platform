@@ -1,0 +1,101 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>CodeDash | Questions</title>
+
+    <link rel="stylesheet" href="assets/css/style.css">
+
+</head>
+
+<body>
+
+    <div class="demo-banner">
+        Frontend demonstration: accounts, saved scores, and grading require backend integration.
+    </div>
+
+    <header>
+        <nav class="navbar" aria-label="Main navigation">
+
+            <a href="index.html" class="logo">CodeDash</a>
+
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="about.html">About Us</a>
+                <a href="dashboard.html">Dashboard</a>
+                <a href="questions.html">Questions</a>
+                <a href="account.html">Account</a>
+                <a href="login.html">Login</a>
+                <a href="register.html" class="nav-button">Register</a>
+            </div>
+
+        </nav>
+    </header>
+
+    <main class="page">
+
+        <h1>Networking Challenges</h1>
+
+        <p class="lead muted">
+            Sample questions are provided to test frontend filtering and navigation.
+            They are not fetched from PostgreSQL yet.
+        </p>
+
+        <div class="toolbar">
+
+            <div>
+                <label for="category-filter">Category</label>
+
+                <select id="category-filter">
+                    <option value="all">All categories</option>
+                </select>
+            </div>
+
+            <div>
+                <label for="difficulty-filter">Difficulty</label>
+
+                <select id="difficulty-filter">
+                    <option value="all">All difficulties</option>
+                    <option>Easy</option>
+                    <option>Medium</option>
+                    <option>Hard</option>
+                </select>
+            </div>
+
+            <div>
+                <label for="search">Search</label>
+
+                <input
+                    id="search"
+                    type="search"
+                    placeholder="Search tickets"
+                >
+            </div>
+
+        </div>
+
+        <p
+            id="result-count"
+            role="status"
+            aria-live="polite">
+        </p>
+
+        <div id="question-list" class="cards"></div>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2026 CodeDash</p>
+        <p>Learn. Practice. Improve.</p>
+    </footer>
+  
+    <script src="assets/js/script.js" defer></script>
+    <script src="assets/js/mock-data.js" defer></script>
+    <script src="assets/js/questions.js" defer></script>
+  
+</body>
+</html>

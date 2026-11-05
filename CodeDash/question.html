@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CodeDash | Coding Workspace</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+  <div class="demo-banner">Frontend demonstration — code is never executed or graded here.</div>
+  <header><nav class="navbar" aria-label="Main navigation">
+    <a href="index.html" class="logo">CodeDash</a>
+    <div class="nav-links">
+      <a href="index.html">Home</a><a href="about.html">About Us</a>
+      <a href="dashboard.html">Dashboard</a><a href="questions.html">Questions</a>
+      <a href="account.html">Account</a><a href="login.html">Login</a>
+      <a href="register.html" class="nav-button">Register</a>
+    </div>
+  </nav></header>
+  <main class="workspace-page">
+    <div class="workspace-topbar">
+      <a class="text-link" href="questions.html">← All challenges</a>
+      <span id="workspace-status" class="workspace-status">Frontend demo</span>
+    </div>
+    <div class="workspace-grid">
+      <section class="workspace-panel ticket-panel" aria-labelledby="ticket-heading">
+        <div class="workspace-panel-header"><h2 id="ticket-heading">Support Ticket</h2><span id="ticket-difficulty" class="pill">—</span></div>
+        <div id="ticket" class="workspace-panel-body"></div>
+      </section>
+      <section class="workspace-panel editor-panel" aria-labelledby="editor-heading">
+        <div class="workspace-panel-header"><h2 id="editor-heading">Code Editor</h2><span class="workspace-status">Python</span></div>
+        <div class="workspace-panel-body editor-body">
+          <label for="language">Language</label>
+          <select id="language"><option value="python">Python (planned MVP)</option></select>
+          <label for="code">Your solution</label>
+          <textarea id="code" spellcheck="false" autocomplete="off" autocapitalize="off" aria-describedby="editor-hint" placeholder="# Write your Python solution here"></textarea>
+          <p id="editor-hint" class="muted editor-hint">Tab inserts spaces. Code stays in this browser tab; nothing is sent to a server.</p>
+          <div class="workspace-actions">
+            <button id="run-tests" class="btn" type="button" disabled title="Requires a secure grading backend">Run Tests (backend required)</button>
+            <button id="submit-code" class="btn primary" type="button">Submit Solution</button>
+          </div>
+        </div>
+      </section>
+    </div>
+    <section class="workspace-panel results-panel" aria-labelledby="results-heading">
+      <div class="workspace-panel-header"><h2 id="results-heading">Results &amp; Feedback</h2><span class="workspace-status">Not connected</span></div>
+      <div id="submission-message" class="workspace-panel-body" role="status" aria-live="polite">Enter a solution and choose Submit Solution to validate the input. Test execution and grading require the backend.</div>
+    </section>
+  </main>
+  <footer><p>&copy; 2026 CodeDash</p><p>Learn. Practice. Improve.</p></footer>
+  <script src="assets/js/script.js" defer></script>
+  <script src="assets/js/mock-data.js" defer></script>
+  <script src="assets/js/api.js" defer></script>
+  <script src="assets/js/submission.js" defer></script>
+  
+</body>
+</html>
