@@ -1,3 +1,4 @@
+// biome-ignore lint/suspicious/noRedundantUseStrict: Preserve strict mode for classic browser scripts.
 "use strict";
 
 // Shared page behavior. Avoid introducing fake authentication state.
