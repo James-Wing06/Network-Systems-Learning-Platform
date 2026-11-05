@@ -3,7 +3,7 @@
 Requires:  pip install mysql-connector-python
 
 !!! Run ONLY against a disposable server/database. !!!
-Your SQL script is hard-coded to the database `nslp`, and it creates accounts
+This SQL script is hard-coded to the database `nslp`, and it creates accounts
 that are granted on `nslp`. To test safely, make a copy of the script where
 `nslp` -> `nslp_test` (and ideally the three account names get a `_test`
 suffix), run it on a disposable RDS instance or local MySQL 8.4, then point
@@ -472,7 +472,7 @@ class TestConstraints(DBCase):
 #    When you tighten the schema, these tests will fail -> flip them.
 # ======================================================================
 class TestKnownGaps(DBCase):
-        # A forgotten flag publishes the test case. Consider DEFAULT TRUE.
+        
 
 
     def test_gap_email_check_is_very_loose(self):
