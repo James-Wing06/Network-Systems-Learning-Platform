@@ -1,12 +1,12 @@
 "use strict";
 
 // Demonstration content only; replace via backend GET /api/questions.
-(function (root, factory) {
+((root, factory) => {
   const api = factory();
   if (typeof module === "object" && module.exports) {
     module.exports = api;
   } else root.CodeDashMock = api;
-})(typeof globalThis !== "undefined" ? globalThis : this, function () {
+})(typeof globalThis !== "undefined" ? globalThis : this, () => {
   const questions = [
     {
       id: "ip-1",
