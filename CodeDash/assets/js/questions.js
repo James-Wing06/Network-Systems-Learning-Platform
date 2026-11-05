@@ -42,8 +42,8 @@ if (list && categoryFilter && difficultyFilter && searchInput && count) {
       list.append(card);
     });
   }
-  [categoryFilter, difficultyFilter, searchInput].forEach((el) =>
-    el.addEventListener("input", render),
-  );
+  [categoryFilter, difficultyFilter, searchInput].forEach((el) => {
+    el.addEventListener("input", render);
+  });
   render();
 }
