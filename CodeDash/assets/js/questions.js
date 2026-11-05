@@ -1,4 +1,5 @@
 /* global CodeDashMock */
+// biome-ignore lint/suspicious/noRedundantUseStrict: Preserve strict mode for classic browser scripts.
 "use strict";
 
 const list = document.querySelector("#question-list");
