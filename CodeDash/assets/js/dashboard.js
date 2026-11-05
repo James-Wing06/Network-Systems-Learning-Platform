@@ -1,4 +1,5 @@
 /* global CodeDashMock */
+// biome-ignore lint/suspicious/noRedundantUseStrict: Preserve strict mode for classic browser scripts.
 "use strict";
 
 // Dashboard reads demo questions only. Account progress and scores must come from the server.
