@@ -2,7 +2,7 @@
 "use strict";
 
 // Dashboard reads demo questions only. Account progress and scores must come from the server.
-(function () {
+(() => {
   const data =
     typeof CodeDashMock !== "undefined" ? CodeDashMock.questions : [];
   const total = document.getElementById("total-challenges");
