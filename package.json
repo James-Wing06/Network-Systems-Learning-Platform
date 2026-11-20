@@ -6,5 +6,24 @@
   "scripts": {
     "test": "node --test tests/*.test.cjs",
     "check": "node --check assets/js/script.js && node --check assets/js/auth.js && node --check assets/js/questions.js && node --check assets/js/submission.js && node --check assets/js/api.js && node --check assets/js/mock-data.js && node --check assets/js/validation.js && node --check assets/js/dashboard.js"
+  },
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/James-Wing06/Network-Systems-Learning-Platform.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/James-Wing06/Network-Systems-Learning-Platform/issues"
+  },
+  "homepage": "https://github.com/James-Wing06/Network-Systems-Learning-Platform#readme",
+  "dependencies": {
+    "express": "^5.3.0"
   }
 }
