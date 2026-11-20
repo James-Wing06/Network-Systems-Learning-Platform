@@ -5,7 +5,9 @@
   const api = factory();
   if (typeof module === "object" && module.exports) {
     module.exports = api;
-  } else root.CodeDashValidation = api;
+  } else {
+    root.CodeDashValidation = api;
+  }
 })(typeof globalThis !== "undefined" ? globalThis : this, () => {
   function validateLogin(email, password) {
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {

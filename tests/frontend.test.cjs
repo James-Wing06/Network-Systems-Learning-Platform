@@ -1,11 +1,18 @@
--"use strict";
+"use strict";
 
 const test = require("node:test");
 const assert = require("node:assert/strict");
 const fs = require("node:fs");
 const path = require("node:path");
-const { validateLogin, validateRegistration } = require("../assets/js/validation.js");
-const { questions, filterQuestions } = require("../assets/js/mock-data.js");
+
+const validationExport = require("../assets/js/validation.js");
+const { validateLogin, validateRegistration } =
+    validationExport.validateLogin ? validationExport : globalThis.CodeDashValidation;
+
+const mockExport = require("../assets/js/mock-data.js");
+const { questions, filterQuestions } =
+    mockExport.filterQuestions ? mockExport : globalThis.CodeDashMock;
+
 const root = path.resolve(__dirname, "..");
 test("all homepage navigation destinations exist", () => {
   const html = fs.readFileSync(path.join(root, "index.html"), "utf8");
